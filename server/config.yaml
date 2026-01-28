@@ -1,0 +1,34 @@
+# 🕳️ FortiComm Black Hole Relay Server Configuration
+
+# Server bind address
+bind_addr: ":8080"
+
+# Maximum message size in bytes (64KB)
+max_message_size: 65536
+
+# Message TTL in seconds (24 hours)
+message_ttl_seconds: 86400
+
+# TLS Configuration
+tls:
+  enabled: false
+  cert_file: ""
+  key_file: ""
+  auto_cert: false
+
+# Federation Configuration
+federation:
+  enabled: false
+  servers: []
+  shared_secret: ""
+
+# Rate Limiting
+rate_limit:
+  enabled: true
+  messages_per_minute: 60
+  connections_per_ip: 10
+
+# Logging Configuration
+logging:
+  level: "info"  # debug, info, warn, error
+  format: "json" # json, console

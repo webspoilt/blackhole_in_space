@@ -1,0 +1,95 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+.pnpm-store
+.bun
+
+# Build outputs
+dist
+dist-ssr
+*.local
+.next
+out
+build
+
+# Lock files (excluding package-lock.json)
+bun.lock
+yarn.lock
+pnpm-lock.yaml
+
+# Editor/IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Rust
+/target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+vendor/
+
+# WASM
+*.wasm
+pkg/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Docker
+.docker
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Test coverage
+coverage
+*.lcov
+
+# Temporary files
+tmp
+temp
+*.tmp
+*.temp
+
+# Secrets
+*.pem
+*.key
+secrets/
+
+# Database
+*.sqlite
+*.db
+*.sql.gz

@@ -1,0 +1,174 @@
+# 🕳️ BlackHole In Space
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/forticomm/blackhole/main/assets/blackhole-logo.svg" width="200" alt="BlackHole In Space">
+</p>
+
+<p align="center">
+  <b>The Messaging Platform That Swallows All Traces</b><br>
+  <i>What enters the event horizon, never leaves. Not even light. Not even hackers.</i>
+</p>
+
+<p align="center">
+  <a href="#features"><img src="https://img.shields.io/badge/Security-Military%20Grade-red?style=for-the-badge" alt="Security"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License"></a>
+  <a href="#cryptography"><img src="https://img.shields.io/badge/Crypto-Post%20Quantum-blue?style=for-the-badge" alt="Crypto"></a>
+</p>
+
+---
+
+## 🌌 Overview
+
+**BlackHole In Space** is a mathematically unbreakable messaging platform. Like a black hole's event horizon, once your message enters our encrypted core, it becomes **mathematically impossible** to retrieve without the proper keys.
+
+### Key Features
+
+- 🔐 **Military-Grade Encryption**: Signal Protocol + MLS for groups
+- 🧮 **Post-Quantum Security**: ML-KEM-768 lattice-based cryptography
+- 🔬 **Zero-Knowledge Proofs**: Prove identity without revealing secrets
+- 🚫 **Zero Server Storage**: Servers only relay encrypted blobs
+- ☁️ **User-Controlled Backups**: Encrypted backups to your cloud
+- ⏱️ **Ephemeral by Design**: Auto-delete after configurable period
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        CLIENT LAYER                              │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
+│  │  Web App    │  │ Mobile App  │  │ Desktop App │             │
+│  │  (React)    │  │(React Native│  │   (Tauri)   │             │
+│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘             │
+│         │                │                │                     │
+│  ╔══════╧════════════════╧════════════════╧══════╗             │
+│  ║        RUST CRYPTO CORE (WASM + FFI)          ║             │
+│  ║  • Elliptic Curve (Curve25519)               ║             │
+│  ║  • Lattice (ML-KEM-768)                      ║             │
+│  ║  • Zero-Knowledge (zk-SNARKs)                ║             │
+│  ╚══════════════════════╤═══════════════════════╝             │
+└─────────────────────────┼─────────────────────────────────────┘
+                          │ WebSocket (WSS) + Noise Protocol
+                          ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      RELAY LAYER (Go)                          │
+│  • Ephemeral Message Queue (24h TTL)                           │
+│  • Sealed Sender (Anonymous Routing)                           │
+│  • Zero Storage (No Message Persistence)                       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📁 Project Structure
+
+```
+blackhole_in_space/
+├── core/           # Rust cryptographic engine (WASM)
+├── server/         # Go relay server
+├── web/            # React web client
+├── homepage/       # Next.js marketing site
+├── monitoring/     # Prometheus/Grafana configs
+├── .github/        # CI/CD workflows
+└── docker-compose.yml
+```
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- [Rust](https://rustup.rs/) (1.70+)
+- [Go](https://golang.org/dl/) (1.21+)
+- [Node.js](https://nodejs.org/) (20+) or [Bun](https://bun.sh/)
+- [Docker](https://docker.com/) (optional)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/blackhole_in_space.git
+cd blackhole_in_space
+
+# Build Rust crypto core
+cd core && cargo build --release && cd ..
+
+# Build Go relay server
+cd server && go build -o blackhole-relay ./cmd/relay && cd ..
+
+# Build web client
+cd web && npm install && npm run build && cd ..
+
+# Or use Docker
+docker-compose up -d
+```
+
+### Access Points
+
+- 🌐 **Web Interface**: https://localhost:3000
+- 🔌 **WebSocket API**: wss://localhost:8080
+- 📊 **Metrics**: https://localhost:9090
+
+---
+
+## 🔐 Security
+
+### Cryptographic Primitives
+
+| Component | Algorithm | Purpose |
+|-----------|-----------|---------|
+| Identity Keys | Ed25519 | Long-term identity signing |
+| Key Exchange | X25519 | Ephemeral key agreement |
+| Encryption | AES-256-GCM | Message encryption |
+| Hashing | SHA3-256 / Blake3 | Integrity verification |
+| Post-Quantum | ML-KEM-768 | Quantum-safe key encapsulation |
+| Zero-Knowledge | Groth16/BN254 | Identity proofs |
+
+### Security Layers (9 Deep)
+
+1. **Application**: CSP, SRI, HSTS
+2. **Transport**: TLS 1.3, Certificate Pinning
+3. **Protocol**: Signal Double Ratchet + MLS
+4. **Post-Quantum**: ML-KEM-768 Hybrid
+5. **Zero-Knowledge**: zk-SNARK Identity
+6. **Homomorphic**: Encrypted Computation
+7. **Hardware**: TPM/Secure Enclave
+8. **Memory**: Encrypted RAM, Anti-Dump
+9. **Physical**: Air-Gap Option, HSM
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+```bash
+# Fork and clone
+git clone https://github.com/YOUR_USERNAME/blackhole_in_space.git
+
+# Create feature branch
+git checkout -b feature/amazing-feature
+
+# Run tests
+cd core && cargo test
+cd ../server && go test ./...
+cd ../web && npm test
+
+# Submit PR
+git push origin feature/amazing-feature
+```
+
+---
+
+## 📜 License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+---
+
+<p align="center">
+  <b>🕳️ BlackHole In Space</b><br>
+  <i>Where Messages Go to Never Be Found</i>
+</p>
