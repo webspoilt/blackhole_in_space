@@ -9,6 +9,7 @@ import { ImmersiveScene } from '@/components/3d/ImmersiveScene'
 import { CursorFollower } from '@/components/ui/cursor-follower'
 import { MysteriousCard, MysteriousReveal } from '@/components/ui/mysterious-reveal'
 import { BackButton } from '@/components/ui/back-button'
+import { DownloadSection } from '@/components/DownloadSection'
 import Link from 'next/link'
 
 export default function Home() {
@@ -93,36 +94,38 @@ export default function Home() {
             <div className="hidden md:flex items-center gap-10">
               <button
                 onClick={() => setCurrentView('home')}
-                className={`text-sm font-semibold transition-all ${
-                  currentView === 'home'
+                className={`text-sm font-semibold transition-all ${currentView === 'home'
                     ? 'text-white shadow-[0_0_20px_rgba(255,255,255,0.2)]'
                     : 'text-gray-400 hover:text-white hover:scale-105'
-                }`}
+                  }`}
               >
                 Home
               </button>
               <Link href="/product">
                 <button
-                  className={`text-sm font-semibold transition-all ${
-                    currentView === 'product'
+                  className={`text-sm font-semibold transition-all ${currentView === 'product'
                       ? 'text-white shadow-[0_0_20px_rgba(255,255,255,0.2)]'
                       : 'text-gray-400 hover:text-white hover:scale-105'
-                  }`}
+                    }`}
                 >
                   Product
                 </button>
               </Link>
               <Link href="/features">
                 <button
-                  className={`text-sm font-semibold transition-all ${
-                    currentView === 'features'
+                  className={`text-sm font-semibold transition-all ${currentView === 'features'
                       ? 'text-white shadow-[0_0_20px_rgba(255,255,255,0.2)]'
                       : 'text-gray-400 hover:text-white hover:scale-105'
-                  }`}
+                    }`}
                 >
                   Features
                 </button>
               </Link>
+              <a href="#download">
+                <button className="text-sm font-semibold transition-all text-gray-400 hover:text-white hover:scale-105">
+                  Download
+                </button>
+              </a>
             </div>
 
             <Button className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-semibold shadow-[0_0_40px_rgba(16,185,129,0.5)] border border-white/10">
@@ -324,6 +327,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Download Section */}
+        <DownloadSection />
 
         {/* CTA Section */}
         <section className="py-32 relative">
