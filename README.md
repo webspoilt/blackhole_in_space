@@ -89,7 +89,7 @@ blackhole_in_space/
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/blackhole_in_space.git
+git clone https://github.com/webspoilt/blackhole_in_space.git
 cd blackhole_in_space
 
 # Build Rust crypto core
@@ -146,7 +146,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```bash
 # Fork and clone
-git clone https://github.com/YOUR_USERNAME/blackhole_in_space.git
+git clone https://github.com/webspoilt/blackhole_in_space.git
 
 # Create feature branch
 git checkout -b feature/amazing-feature
@@ -170,5 +170,6 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 <p align="center">
   <b>🕳️ BlackHole In Space</b><br>
-  <i>Where Messages Go to Never Be Found</i>
+  <i>Where Messages Go to Never Be Found</i><br><br>
+  Created by <b>zeroday</b> 🔐
 </p>

@@ -14,26 +14,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title: "BlackHole In Space - Secure Messaging Platform",
+  description: "The mathematically unbreakable messaging platform. Military-grade encryption with Signal Protocol, post-quantum cryptography, and zero server storage.",
+  keywords: ["BlackHole", "Secure Messaging", "Encryption", "Signal Protocol", "Post-Quantum", "Privacy"],
+  authors: [{ name: "zeroday" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "BlackHole In Space",
+    description: "Secure messaging that governments trust and teams love",
+    url: "https://github.com/webspoilt/blackhole_in_space",
+    siteName: "BlackHole In Space",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "BlackHole In Space",
+    description: "Secure messaging that governments trust and teams love",
   },
 };
+
 
 export default function RootLayout({
   children,
