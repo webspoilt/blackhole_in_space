@@ -1,10 +1,24 @@
 'use client'
 
+import { useRef, useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { PerspectiveCamera } from '@react-three/drei'
 import { BackgroundScene, BlackHole, CosmicRings, NebulaClouds } from './BackgroundScene'
 
 export function ImmersiveScene() {
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = Math.min(1, Math.max(0, window.scrollY / scrollHeight))
+      setScrollProgress(progress)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
       <Canvas
@@ -22,9 +36,9 @@ export function ImmersiveScene() {
         <pointLight position={[30, -20, -20]} intensity={0.3} color="#f43f5e" />
 
         <BackgroundScene />
-        <BlackHole />
-        <CosmicRings />
-        <NebulaClouds />
+        <BlackHole scrollProgress={scrollProgress} />
+        <CosmicRings scrollProgress={scrollProgress} />
+        <NebulaClouds scrollProgress={scrollProgress} />
       </Canvas>
 
       {/* Deep space vignette */}

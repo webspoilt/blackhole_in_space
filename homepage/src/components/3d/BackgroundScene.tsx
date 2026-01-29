@@ -8,9 +8,9 @@ export function BackgroundScene() {
   const { viewport } = useThree()
   const particlesRef = useRef<THREE.Points>(null)
 
-  // Create particle system
+  // Create massive particle system - 15,000 stars
   const particles = useMemo(() => {
-    const count = 5000
+    const count = 15000
     const positions = new Float32Array(count * 3)
     const colors = new Float32Array(count * 3)
     const sizes = new Float32Array(count)
@@ -18,8 +18,19 @@ export function BackgroundScene() {
     for (let i = 0; i < count; i++) {
       const i3 = i * 3
 
-      // Create spherical distribution
-      const radius = 20 + Math.random() * 60
+      // Create layered cosmic distribution
+      const layer = Math.random()
+      let radius
+      if (layer < 0.2) {
+        radius = 10 + Math.random() * 30  // Inner stars
+      } else if (layer < 0.5) {
+        radius = 40 + Math.random() * 50  // Middle stars
+      } else if (layer < 0.8) {
+        radius = 90 + Math.random() * 60  // Outer stars
+      } else {
+        radius = 150 + Math.random() * 100  // Distant stars
+      }
+
       const theta = Math.random() * Math.PI * 2
       const phi = Math.acos(2 * Math.random() - 1)
 
@@ -27,27 +38,31 @@ export function BackgroundScene() {
       positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta)
       positions[i3 + 2] = radius * Math.cos(phi) * 0.3
 
-      // Deep space colors
+      // Deep space colors with more variety
       const colorChoice = Math.random()
-      if (colorChoice < 0.4) {
+      if (colorChoice < 0.25) {
         colors[i3] = 0.02
         colors[i3 + 1] = 0.01
         colors[i3 + 2] = 0.03
-      } else if (colorChoice < 0.7) {
+      } else if (colorChoice < 0.45) {
         colors[i3] = 0.15
         colors[i3 + 1] = 0.05
         colors[i3 + 2] = 0.3
-      } else if (colorChoice < 0.85) {
+      } else if (colorChoice < 0.65) {
         colors[i3] = 0.0
         colors[i3 + 1] = 0.2
         colors[i3 + 2] = 0.4
-      } else {
+      } else if (colorChoice < 0.82) {
         colors[i3] = 0.0
         colors[i3 + 1] = 0.4
         colors[i3 + 2] = 0.6
+      } else {
+        colors[i3] = 0.4
+        colors[i3 + 1] = 0.3
+        colors[i3 + 2] = 0.8  // Bright distant stars
       }
 
-      sizes[i] = Math.random() * 0.04 + 0.005
+      sizes[i] = Math.random() * 0.045 + 0.008
     }
 
     return { positions, colors, sizes }
@@ -97,7 +112,7 @@ export function BackgroundScene() {
   )
 }
 
-export function BlackHole() {
+export function BlackHole({ scrollProgress = 0 }: { scrollProgress?: number }) {
   const groupRef = useRef<THREE.Group>(null)
 
   useFrame((state) => {
@@ -106,10 +121,16 @@ export function BlackHole() {
 
     // Pulsing effect
     const scale = 1 + Math.sin(time * 1.5) * 0.08
+
+    // Scroll-based position - black hole moves toward camera and zooms
+    const scrollOffset = scrollProgress * 20  // Move 20 units closer
+    const zoomScale = 1 + scrollProgress * 3  // Zoom in 3x
+
     if (groupRef.current) {
-      groupRef.current.scale.set(scale, scale, scale)
-      groupRef.current.rotation.z = time * 0.3
-      groupRef.current.rotation.x = Math.sin(time * 0.4) * 0.2
+      groupRef.current.scale.set(scale * zoomScale, scale * zoomScale, scale * zoomScale)
+      groupRef.current.position.z = scrollOffset
+      groupRef.current.rotation.z = time * 0.3 + scrollProgress * Math.PI * 2
+      groupRef.current.rotation.x = Math.sin(time * 0.4) * 0.2 + scrollProgress * 0.5
     }
   })
 
@@ -183,16 +204,22 @@ export function BlackHole() {
   )
 }
 
-export function CosmicRings() {
+export function CosmicRings({ scrollProgress = 0 }: { scrollProgress?: number }) {
   const groupRef = useRef<THREE.Group>(null)
 
   useFrame((state) => {
     if (!groupRef.current) return
     const time = state.clock.getElapsedTime()
 
-    groupRef.current.rotation.x = Math.sin(time * 0.15) * 0.4
-    groupRef.current.rotation.y = time * 0.06
-    groupRef.current.rotation.z = time * 0.03
+    // Scroll-based rotation - faster as we travel through
+    const rotationSpeed = 1 + scrollProgress * 3
+
+    groupRef.current.rotation.x = Math.sin(time * 0.15 * rotationSpeed) * 0.4
+    groupRef.current.rotation.y = time * 0.06 * rotationSpeed
+    groupRef.current.rotation.z = time * 0.03 * rotationSpeed
+
+    // Move away as we zoom in
+    groupRef.current.position.z = -10 - scrollProgress * 30
   })
 
   return (
@@ -228,17 +255,22 @@ export function CosmicRings() {
   )
 }
 
-export function NebulaClouds() {
+export function NebulaClouds({ scrollProgress = 0 }: { scrollProgress?: number }) {
   const groupRef = useRef<THREE.Group>(null)
 
   useFrame((state) => {
     if (!groupRef.current) return
     const time = state.clock.getElapsedTime()
 
+    const rotationSpeed = 1 + scrollProgress * 2
+
     groupRef.current.children.forEach((cloud, i) => {
-      cloud.rotation.z = time * 0.1 + i * 0.2
+      cloud.rotation.z = time * 0.1 * rotationSpeed + i * 0.2
       cloud.rotation.x = Math.sin(time * 0.05 + i * 0.1) * 0.3
     })
+
+    // Move away faster as we travel through
+    groupRef.current.position.z = -30 - scrollProgress * 50
   })
 
   return (
