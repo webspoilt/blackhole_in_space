@@ -73,3 +73,11 @@ export function MysteriousReveal({ children, secretContent, className = '' }: My
     </motion.div>
   )
 }
+
+export function MysteriousCard({ children, className = '' }: { children: React.ReactNode, className?: string }) {
+  return (
+    <div className={`relative overflow-hidden ${className}`}>
+      {children}
+    </div>
+  )
+}
