@@ -1,6 +1,6 @@
-# 🕳️ BlackHole In Space - Homepage
+# 🔐 VOID - Secure Messaging Platform
 
-The official homepage for BlackHole In Space secure messaging platform.
+The official homepage for VOID - a military-grade encrypted messaging platform built for government and enterprise use.
 
 ## 🚀 Quick Start
 
@@ -25,19 +25,41 @@ Open [http://localhost:3000](http://localhost:3000) to view the homepage.
 - **Tailwind CSS 4** - Utility-first styling
 - **shadcn/ui** - Accessible UI components
 - **Framer Motion** - Smooth animations
-- **Three.js** - 3D graphics
+- **Inter Font** - Premium typography
+
+## 🔒 Security Features
+
+- **Zero-Knowledge Encryption** - End-to-end encryption with Signal Protocol
+- **Perfect Forward Secrecy** - Each message uses unique keys
+- **Zero Server Storage** - Messages relayed, never stored
+- **Post-Quantum Ready** - ML-KEM-768 integration
+- **Self-Hosted Option** - Deploy on your own infrastructure
 
 ## 📁 Structure
 
 ```
 src/
 ├── app/           # Next.js App Router pages
+│   ├── demo/      # Encryption demo
+│   ├── features/  # Feature showcase
+│   ├── bounty/    # Bug bounty program
+│   ├── download/  # Platform downloads
+│   └── security/  # Security articles
 ├── components/    # React components
-│   ├── ui/       # shadcn/ui components
-│   └── 3d/       # Three.js components
-├── hooks/        # Custom React hooks
-└── lib/          # Utilities
+│   ├── ui/        # shadcn/ui components
+│   └── 3d/        # Three.js components
+├── hooks/         # Custom React hooks
+│   ├── use3DTilt.ts
+│   └── useScrollReveal.ts
+└── lib/           # Utilities
 ```
+
+## 🎨 Design System
+
+- **Colors**: Navy (#0a0f1a), Amber (#fbbf24), Blue (#3b82f6)
+- **Font**: Inter via Google Fonts
+- **Cards**: Glassmorphism with backdrop blur
+- **Animations**: 2D canvas particles, scroll reveals, 3D tilt
 
 ## 🔧 Configuration
 
@@ -58,7 +80,7 @@ npm start
 ```
 
 Or deploy to Vercel:
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/webspoilt/blackhole_in_space)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/webspoilt/void-messaging)
 
 ---
 

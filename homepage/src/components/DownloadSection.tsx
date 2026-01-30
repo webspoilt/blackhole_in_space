@@ -10,7 +10,7 @@ export function DownloadSection() {
       icon: <Smartphone className="w-6 h-6" />,
       description: 'Secure messaging on the go',
       color: 'from-emerald-500 to-cyan-500',
-      downloadUrl: '/downloads/blackhole-android.apk',
+      downloadUrl: '/downloads/void-android.apk',
       action: 'androidDownload',
     },
     {
@@ -161,7 +161,7 @@ export function DownloadSection() {
           className="text-center"
         >
           <motion.a
-            href="https://github.com/webspoilt/blackhole_in_space/tree/"
+            href="https://github.com/webspoilt/void-messaging"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
