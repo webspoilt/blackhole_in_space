@@ -1,12 +1,12 @@
-# 🔐 VOID
+# 🔐 VAULT
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/webspoilt/void/main/assets/void-logo.svg" width="200" alt="VOID">
+  <img src="https://raw.githubusercontent.com/webspoilt/vault/main/assets/vault-logo.svg" width="200" alt="VAULT">
 </p>
 
 <p align="center">
   <b>The Secure Messaging Platform That Swallows All Traces</b><br>
-  <i>What enters the void, never leaves. Not even light. Not even hackers.</i>
+  <i>What enters the VAULT, never leaves. Not even light. Not even hackers.</i>
 </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
 
 ## 🌌 Overview
 
-**VOID** is a mathematically unbreakable messaging platform. Like an event horizon, once your message enters our encrypted core, it becomes **mathematically impossible** to retrieve without the proper keys.
+**VAULT** is a mathematically unbreakable messaging platform. Like an event horizon, once your message enters our encrypted core, it becomes **mathematically impossible** to retrieve without the proper keys.
 
 ### Key Features
 
@@ -64,7 +64,7 @@
 ## 📁 Project Structure
 
 ```
-void/
+vault/
 ├── core/           # Rust cryptographic engine (WASM)
 ├── server/         # Go relay server
 ├── web/            # React web client
@@ -89,14 +89,14 @@ void/
 
 ```bash
 # Clone the repository
-git clone https://github.com/webspoilt/void.git
-cd void
+git clone https://github.com/webspoilt/vault.git
+cd vault
 
 # Build Rust crypto core
 cd core && cargo build --release && cd ..
 
 # Build Go relay server
-cd server && go build -o void-relay ./cmd/relay && cd ..
+cd server && go build -o vault-relay ./cmd/relay && cd ..
 
 # Build web client
 cd web && npm install && npm run build && cd ..
@@ -146,7 +146,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```bash
 # Fork and clone
-git clone https://github.com/webspoilt/void.git
+git clone https://github.com/webspoilt/vault.git
 
 # Create feature branch
 git checkout -b feature/amazing-feature
@@ -169,7 +169,7 @@ MIT License - See [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  <b>🔐 VOID</b><br>
+  <b>🔐 VAULT</b><br>
   <i>Where Messages Go to Never Be Found</i><br><br>
   Created by <b>zeroday</b> 🔐
 </p>
