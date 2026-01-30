@@ -1,6 +1,6 @@
-# 🕳️ FortiComm Black Hole - Docker Compose
+# 🔐 VOID - Docker Compose
 # 
-# This file defines the complete FortiComm Black Hole deployment
+# This file defines the complete VOID deployment
 # including the relay server, web client, and monitoring.
 
 version: '3.8'
@@ -11,7 +11,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    container_name: blackhole-relay
+    container_name: void-relay
     restart: unless-stopped
     ports:
       - "8080:8080"
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./server/config.yaml:/app/config.yaml:ro
     networks:
-      - blackhole-network
+      - void-network
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/health"]
       interval: 30s
@@ -36,7 +36,7 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
-    container_name: blackhole-web
+    container_name: void-web
     restart: unless-stopped
     ports:
       - "3000:80"
@@ -46,12 +46,12 @@ services:
     depends_on:
       - relay
     networks:
-      - blackhole-network
+      - void-network
 
   # Prometheus (Metrics)
   prometheus:
     image: prom/prometheus:latest
-    container_name: blackhole-prometheus
+    container_name: void-prometheus
     restart: unless-stopped
     ports:
       - "9090:9090"
@@ -65,12 +65,12 @@ services:
       - '--web.console.templates=/etc/prometheus/consoles'
       - '--web.enable-lifecycle'
     networks:
-      - blackhole-network
+      - void-network
 
   # Grafana (Dashboards)
   grafana:
     image: grafana/grafana:latest
-    container_name: blackhole-grafana
+    container_name: void-grafana
     restart: unless-stopped
     ports:
       - "3001:3000"
@@ -84,24 +84,24 @@ services:
     depends_on:
       - prometheus
     networks:
-      - blackhole-network
+      - void-network
 
   # Redis (Optional: for distributed deployments)
   redis:
     image: redis:7-alpine
-    container_name: blackhole-redis
+    container_name: void-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
       - redis-data:/data
     networks:
-      - blackhole-network
+      - void-network
     profiles:
       - distributed
 
 networks:
-  blackhole-network:
+  void-network:
     driver: bridge
 
 volumes:

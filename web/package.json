@@ -1,7 +1,7 @@
 {
-  "name": "forticomm-blackhole-web",
+  "name": "void-web",
   "version": "0.1.0",
-  "description": "FortiComm Black Hole - Web Client",
+  "description": "VOID - Secure Messaging Web Client",
   "private": true,
   "type": "module",
   "scripts": {

@@ -1,4 +1,4 @@
-# 🕳️ FortiComm Black Hole Relay Server Configuration
+# 🔐 VOID Relay Server Configuration
 
 # Server bind address
 bind_addr: ":8080"
