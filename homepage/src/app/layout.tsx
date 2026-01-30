@@ -14,27 +14,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BlackHole In Space - Secure Messaging Platform",
-  description: "The mathematically unbreakable messaging platform. Military-grade encryption with Signal Protocol, post-quantum cryptography, and zero server storage.",
-  keywords: ["BlackHole", "Secure Messaging", "Encryption", "Signal Protocol", "Post-Quantum", "Privacy"],
-  authors: [{ name: "zeroday" }],
+  title: "VOID - Military-Grade Encrypted Messaging",
+  description: "The messaging platform that swallows all traces. What enters the event horizon, never leaves. Military-grade encryption that governments trust.",
+  keywords: ["VOID", "encrypted messaging", "Signal Protocol", "end-to-end encryption", "secure communication", "privacy"],
+  authors: [{ name: "VOID Team" }],
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "BlackHole In Space",
-    description: "Secure messaging that governments trust and teams love",
-    url: "https://github.com/webspoilt/blackhole_in_space",
-    siteName: "BlackHole In Space",
+    title: "VOID - Military-Grade Encrypted Messaging",
+    description: "The messaging platform that swallows all traces. Unbreakable encryption, zero traces.",
+    siteName: "VOID",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BlackHole In Space",
-    description: "Secure messaging that governments trust and teams love",
+    title: "VOID - Military-Grade Encrypted Messaging",
+    description: "The messaging platform that swallows all traces. Unbreakable encryption, zero traces.",
   },
 };
-
 
 export default function RootLayout({
   children,
