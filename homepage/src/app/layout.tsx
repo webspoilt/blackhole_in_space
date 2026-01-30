@@ -1,36 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "VOID - Military-Grade Encrypted Messaging",
-  description: "The messaging platform that swallows all traces. What enters the event horizon, never leaves. Military-grade encryption that governments trust.",
-  keywords: ["VOID", "encrypted messaging", "Signal Protocol", "end-to-end encryption", "secure communication", "privacy"],
-  authors: [{ name: "VOID Team" }],
+  title: "VOID - Sovereign Secure Messaging",
+  description: "Military-grade encryption for mission-critical operations. FedRAMP authorized (in progress), FIPS 140-2 validated. Deploy on-premise or in the cloud.",
+  keywords: ["secure messaging", "government communications", "FIPS 140-2", "FedRAMP", "on-premise", "zero trust"],
+  authors: [{ name: "VOID Enterprise" }],
   icons: {
     icon: "/favicon.ico",
-  },
-  openGraph: {
-    title: "VOID - Military-Grade Encrypted Messaging",
-    description: "The messaging platform that swallows all traces. Unbreakable encryption, zero traces.",
-    siteName: "VOID",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "VOID - Military-Grade Encrypted Messaging",
-    description: "The messaging platform that swallows all traces. Unbreakable encryption, zero traces.",
   },
 };
 
@@ -42,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${inter.variable} antialiased bg-[#0a0f1a] text-gray-100 font-sans`}
       >
         {children}
         <Toaster />
