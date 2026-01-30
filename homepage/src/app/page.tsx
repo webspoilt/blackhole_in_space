@@ -33,7 +33,7 @@ export default function Home() {
               <span className="text-sm font-semibold tracking-wide text-blue-300">MISSION CRITICAL READY</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight">
               Secure Messaging for <br />
               <span className="text-blue-400">Mission-Critical Operations</span>
             </h1>
@@ -230,7 +230,7 @@ export default function Home() {
       {/* Footer - Enterprise */}
       <footer className="bg-[#020617] border-t border-slate-800 pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-16">
             <div className="col-span-2">
               <Link href="/" className="text-2xl font-bold text-white mb-4 block flex items-center gap-2">
                 <div className="w-6 h-6 bg-slate-700 rounded flex items-center justify-center">

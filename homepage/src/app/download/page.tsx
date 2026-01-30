@@ -38,7 +38,7 @@ export default function DownloadPage() {
                 </h3>
 
                 <div className="bg-[#1e293b] border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors cursor-pointer group">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-4 sm:gap-0">
                     <div className="flex items-center gap-3">
                       <Monitor className="w-8 h-8 text-slate-300 group-hover:text-blue-400 transition-colors" />
                       <div>
@@ -53,7 +53,7 @@ export default function DownloadPage() {
                 </div>
 
                 <div className="bg-[#1e293b] border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors cursor-pointer group">
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-4 sm:gap-0">
                     <div className="flex items-center gap-3">
                       <Terminal className="w-8 h-8 text-slate-300 group-hover:text-amber-400 transition-colors" />
                       <div>

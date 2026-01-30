@@ -91,7 +91,7 @@ export default function SecurityPage() {
                 </div>
               </div>
               <div className="bg-[#111827] border border-white/10 rounded-2xl p-8 font-mono text-sm leading-relaxed overflow-hidden">
-                <div className="text-gray-500 mb-4 ml-60">
+                <div className="text-gray-500 mb-4 ml-4 md:ml-60">
                      // Security primitive validation
                   <br />
                      /* FIPS 140-2 Level 2 Compliant */
