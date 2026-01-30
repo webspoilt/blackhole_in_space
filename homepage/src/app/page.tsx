@@ -244,10 +244,10 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-6">Product</h4>
+              <h4 className="text-white font-semibold mb-6">Solutions</h4>
               <ul className="space-y-3 text-sm text-slate-400">
-                <li><Link href="/features" className="hover:text-blue-400">Features</Link></li>
-                <li><Link href="/pricing" className="hover:text-blue-400">Pricing</Link></li>
+                <li><Link href="/features" className="hover:text-blue-400">Capabilities</Link></li>
+                <li><Link href="/pricing" className="hover:text-blue-400">Licensing</Link></li>
                 <li><Link href="/security" className="hover:text-blue-400">Security Architecture</Link></li>
               </ul>
             </div>
@@ -256,20 +256,21 @@ export default function Home() {
               <h4 className="text-white font-semibold mb-6">Government</h4>
               <ul className="space-y-3 text-sm text-slate-400">
                 <li><Link href="/contact-sales" className="hover:text-blue-400">Federal Sales</Link></li>
-                <li><Link href="/download" className="hover:text-blue-400">Deploy Codes</Link></li>
+                <li><Link href="/download" className="hover:text-blue-400">Deployment Center</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-6">Resources</h4>
+              <h4 className="text-white font-semibold mb-6">Developers</h4>
               <ul className="space-y-3 text-sm text-slate-400">
+                <li><Link href="/demo" className="hover:text-blue-400">Live Demo</Link></li>
+                <li><Link href="#" className="hover:text-blue-400">API Documentation</Link></li>
                 <li><Link href="/bounty" className="hover:text-blue-400">Bug Bounty</Link></li>
-                <li><Link href="/demo" className="hover:text-blue-400">Sandbox Demo</Link></li>
               </ul>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center bg-transparent">
+          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-600 text-sm">
               © 2024 FortiComm Inc. dba VAULT. All rights reserved. Made in USA.
             </p>

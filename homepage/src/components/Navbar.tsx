@@ -27,25 +27,19 @@ export default function Navbar() {
                         href="/features"
                         className={`text-sm font-medium transition-colors ${isActive('/features') ? 'text-white' : 'text-slate-300 hover:text-white'}`}
                     >
-                        Product
+                        Solutions
                     </Link>
                     <Link
                         href="/security"
                         className={`text-sm font-medium transition-colors ${isActive('/security') ? 'text-white' : 'text-slate-300 hover:text-white'}`}
                     >
-                        Security
-                    </Link>
-                    <Link
-                        href="/pricing"
-                        className={`text-sm font-medium transition-colors ${isActive('/pricing') ? 'text-white' : 'text-slate-300 hover:text-white'}`}
-                    >
-                        Pricing
+                        Security & Compliance
                     </Link>
                     <Link
                         href="/download"
                         className={`text-sm font-medium transition-colors ${isActive('/download') ? 'text-white' : 'text-slate-300 hover:text-white'}`}
                     >
-                        Deployment
+                        Downloads
                     </Link>
                 </div>
 
@@ -65,10 +59,9 @@ export default function Navbar() {
             {/* Mobile Menu */}
             {isMenuOpen && (
                 <div className="md:hidden bg-[#0f172a] border-t border-slate-800 px-6 py-4 space-y-4">
-                    <Link href="/features" className="block text-slate-300 hover:text-white py-2" onClick={() => setIsMenuOpen(false)}>Product</Link>
-                    <Link href="/security" className="block text-slate-300 hover:text-white py-2" onClick={() => setIsMenuOpen(false)}>Security</Link>
-                    <Link href="/pricing" className="block text-slate-300 hover:text-white py-2" onClick={() => setIsMenuOpen(false)}>Pricing</Link>
-                    <Link href="/download" className="block text-slate-300 hover:text-white py-2" onClick={() => setIsMenuOpen(false)}>Deployment</Link>
+                    <Link href="/features" className="block text-slate-300 hover:text-white py-2" onClick={() => setIsMenuOpen(false)}>Solutions</Link>
+                    <Link href="/security" className="block text-slate-300 hover:text-white py-2" onClick={() => setIsMenuOpen(false)}>Security & Compliance</Link>
+                    <Link href="/download" className="block text-slate-300 hover:text-white py-2" onClick={() => setIsMenuOpen(false)}>Downloads</Link>
                     <Link href="/contact-sales" className="block text-blue-400 font-semibold py-2" onClick={() => setIsMenuOpen(false)}>Contact Sales</Link>
                 </div>
             )}

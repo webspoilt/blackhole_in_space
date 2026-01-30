@@ -141,6 +141,36 @@ export default function SecurityPage() {
           </div>
         </section>
 
+        {/* Vulnerability Disclosure & Safe Harbor */}
+        <section className="py-24 bg-[#05080f] px-6 border-t border-white/10">
+          <div className="max-w-4xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold text-white mb-6">Vulnerability Disclosure (Bug Bounty)</h2>
+            <div className="bg-[#111827] border border-white/10 rounded-2xl p-8 mb-12">
+              <h3 className="text-xl font-bold text-white mb-4">Safe Harbor Policy</h3>
+              <p className="text-gray-400 mb-4">
+                If you conduct security research and disclose vulnerabilities to us in accordance with this policy, we consider your research to be authorized, lawful, and exempt from Terms of Service restrictions. We will not initiate or support legal action against you.
+              </p>
+              <Link href="/bounty" className="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-2">
+                View Full Bounty Program Details & Submit Report →
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              {[
+                { label: "Critical", reward: "$10k+", color: "text-red-400 border-red-500/30" },
+                { label: "High", reward: "$5k", color: "text-orange-400 border-orange-500/30" },
+                { label: "Medium", reward: "$1k", color: "text-yellow-400 border-yellow-500/30" },
+                { label: "Low", reward: "$500", color: "text-blue-400 border-blue-500/30" },
+              ].map((tier) => (
+                <div key={tier.label} className={`p-4 rounded-xl border bg-[#111827]/50 ${tier.color} text-center`}>
+                  <div className="font-bold mb-1">{tier.label}</div>
+                  <div className="text-white font-mono">{tier.reward}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="py-24 bg-blue-900/10 border-t border-white/5">
           <div className="max-w-3xl mx-auto text-center px-6">
