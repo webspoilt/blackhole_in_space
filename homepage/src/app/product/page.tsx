@@ -56,14 +56,14 @@ export default function ProductPage() {
   ]
 
   const comparisons = [
-    { feature: 'End-to-End Encryption', fortiComm: true, whatsapp: true, slack: false, signal: true },
-    { feature: 'Zero Server Storage', fortiComm: true, whatsapp: false, slack: false, signal: true },
-    { feature: 'Auto-Delete Default', fortiComm: true, whatsapp: false, slack: false, signal: false },
-    { feature: 'User-Owned Backups', fortiComm: true, whatsapp: false, slack: false, signal: false },
-    { feature: 'Organization Features', fortiComm: true, whatsapp: false, slack: true, signal: false },
-    { feature: 'Open Source Core', fortiComm: true, whatsapp: false, slack: false, signal: true },
-    { feature: 'Self-Hosted', fortiComm: true, whatsapp: false, slack: true, signal: true },
-    { feature: 'Hardware Key Support', fortiComm: true, whatsapp: false, slack: false, signal: false },
+    { feature: 'End-to-End Encryption', void: true, whatsapp: true, slack: false, signal: true },
+    { feature: 'Zero Server Storage', void: true, whatsapp: false, slack: false, signal: true },
+    { feature: 'Auto-Delete Default', void: true, whatsapp: false, slack: false, signal: false },
+    { feature: 'User-Owned Backups', void: true, whatsapp: false, slack: false, signal: false },
+    { feature: 'Organization Features', void: true, whatsapp: false, slack: true, signal: false },
+    { feature: 'Open Source Core', void: true, whatsapp: false, slack: false, signal: true },
+    { feature: 'Self-Hosted', void: true, whatsapp: false, slack: true, signal: true },
+    { feature: 'Hardware Key Support', void: true, whatsapp: false, slack: false, signal: false },
   ]
 
   return (
@@ -86,7 +86,7 @@ export default function ProductPage() {
                   <Shield className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xl font-bold text-white">FortiComm</span>
+                  <span className="text-xl font-bold text-white">VOID</span>
                   <Crown className="w-3 h-3 text-amber-400" />
                 </div>
               </Link>
@@ -216,11 +216,10 @@ export default function ProductPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-4 px-8 py-5 rounded-2xl font-bold text-lg transition-all duration-500 ${
-                    activeTab === tab.id
+                  className={`flex items-center gap-4 px-8 py-5 rounded-2xl font-bold text-lg transition-all duration-500 ${activeTab === tab.id
                       ? `bg-gradient-to-r ${tab.color} text-white shadow-2xl shadow-emerald-500/30 scale-105`
                       : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
-                  }`}
+                    }`}
                 >
                   <tab.icon className="w-6 h-6" />
                   {tab.label}
@@ -328,7 +327,7 @@ export default function ProductPage() {
               className="text-center mb-16"
             >
               <h2 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-                Why FortiComm?
+                Why VOID?
               </h2>
               <p className="text-2xl text-gray-400">
                 Compare with other messaging platforms
@@ -340,7 +339,7 @@ export default function ProductPage() {
                 <thead>
                   <tr className="border-b border-white/10">
                     <th className="text-left p-8 font-bold text-xl text-white">Feature</th>
-                    <th className="text-center p-8 font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">FortiComm</th>
+                    <th className="text-center p-8 font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">VOID</th>
                     <th className="text-center p-8 font-bold text-xl text-gray-400">WhatsApp</th>
                     <th className="text-center p-8 font-bold text-xl text-gray-400">Slack</th>
                     <th className="text-center p-8 font-bold text-xl text-gray-400">Signal</th>
@@ -351,7 +350,7 @@ export default function ProductPage() {
                     <tr key={index} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                       <td className="p-8 font-semibold text-lg text-white">{row.feature}</td>
                       <td className="text-center p-8">
-                        {row.fortiComm ? (
+                        {row.void ? (
                           <Check className="w-7 h-7 text-emerald-400 mx-auto" />
                         ) : (
                           <X className="w-7 h-7 text-gray-500 mx-auto" />
@@ -412,7 +411,7 @@ export default function ProductPage() {
                   transition={{ delay: 0.1 }}
                   className="text-2xl text-gray-300 mb-12 font-medium leading-relaxed max-w-3xl mx-auto"
                 >
-                  Start your free trial today and discover why organizations trust FortiComm
+                  Start your free trial today and discover why organizations trust VOID
                   with their most sensitive communications.
                 </motion.p>
                 <motion.div
@@ -444,10 +443,10 @@ export default function ProductPage() {
                 <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-xl font-bold text-white">FortiComm</span>
+                <span className="text-xl font-bold text-white">VOID</span>
               </div>
               <div className="text-base text-gray-500 font-medium">
-                © 2024 FortiComm. All rights reserved.
+                © 2024 VOID. All rights reserved.
               </div>
               <div className="flex items-center gap-8">
                 <a href="#" className="text-base text-gray-500 hover:text-white font-medium transition-colors">Privacy</a>

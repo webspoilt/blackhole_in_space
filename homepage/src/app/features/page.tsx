@@ -86,7 +86,7 @@ export default function FeaturesPage() {
     {
       icon: <Globe className="w-8 h-8" />,
       title: 'Self-Hosted Option',
-      description: 'Deploy FortiComm on your own infrastructure. Full control over your data with compliance and data residency guarantees.',
+      description: 'Deploy VOID on your own infrastructure. Full control over your data with compliance and data residency guarantees.',
       category: 'enterprise',
       color: 'from-indigo-500/20 to-indigo-600/10'
     },
@@ -113,14 +113,14 @@ export default function FeaturesPage() {
     }
   ]
 
-  const filteredFeatures = activeCategory === 'all' 
-    ? features 
+  const filteredFeatures = activeCategory === 'all'
+    ? features
     : features.filter(f => f.category === activeCategory)
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden bg-[#0a0f1a]">
       {/* Animated Background Gradient */}
-      <div 
+      <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(251, 191, 36, 0.04) 0%, transparent 60%)`
@@ -131,7 +131,7 @@ export default function FeaturesPage() {
       <nav className="relative z-20 border-b border-white/5 backdrop-blur-lg bg-[#0a0f1a]/80">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-white hover:text-amber-400 transition-colors">
-            FortiComm
+            VOID
           </Link>
           <div className="flex items-center gap-8">
             <Link href="/features" className="text-amber-400 font-semibold">Features</Link>
@@ -167,11 +167,10 @@ export default function FeaturesPage() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                    activeCategory === cat.id
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${activeCategory === cat.id
                       ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-500/20'
                       : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
-                  }`}
+                    }`}
                 >
                   {cat.label}
                 </button>
@@ -222,11 +221,10 @@ export default function FeaturesPage() {
 
                   {/* Category Badge */}
                   <div className="absolute top-4 right-4">
-                    <span className={`text-xs uppercase tracking-wider px-3 py-1 rounded-full ${
-                      feature.category === 'security' ? 'bg-red-500/20 text-red-400' :
-                      feature.category === 'messaging' ? 'bg-green-500/20 text-green-400' :
-                      'bg-blue-500/20 text-blue-400'
-                    }`}>
+                    <span className={`text-xs uppercase tracking-wider px-3 py-1 rounded-full ${feature.category === 'security' ? 'bg-red-500/20 text-red-400' :
+                        feature.category === 'messaging' ? 'bg-green-500/20 text-green-400' :
+                          'bg-blue-500/20 text-blue-400'
+                      }`}>
                       {feature.category}
                     </span>
                   </div>
@@ -251,7 +249,7 @@ export default function FeaturesPage() {
                 Ready to Get Started?
               </h2>
               <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                Start using FortiComm today and experience the most secure messaging platform built for government and enterprise use.
+                Start using VOID today and experience the most secure messaging platform built for government and enterprise use.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/download" className="px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2">
@@ -273,7 +271,7 @@ export default function FeaturesPage() {
         <div className="max-w-6xl mx-auto px-6 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © 2024 FortiComm. All rights reserved.
+              © 2024 VOID. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link href="/" className="text-gray-500 hover:text-white transition-colors text-sm">Home</Link>
