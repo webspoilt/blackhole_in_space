@@ -54,7 +54,7 @@ app.use('/api/', limiter);
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../public')));
+  app.use(express.static(path.join(__dirname, '../client/dist')));
 }
 
 // In-memory stores (ephemeral, no persistence)
@@ -66,10 +66,10 @@ const pendingMagicLinks = new Map(); // token -> { email, deviceId, expires }
 // Cleanup expired messages and sessions
 setInterval(() => {
   const now = Date.now();
-  
+
   // Clean expired messages
   for (const [deviceId, messages] of messageQueue.entries()) {
-    const validMessages = messages.filter(msg => 
+    const validMessages = messages.filter(msg =>
       (now - msg.timestamp) < MAX_MESSAGE_TTL
     );
     if (validMessages.length === 0) {
@@ -78,14 +78,14 @@ setInterval(() => {
       messageQueue.set(deviceId, validMessages);
     }
   }
-  
+
   // Clean expired magic links
   for (const [token, data] of pendingMagicLinks.entries()) {
     if (now > data.expires) {
       pendingMagicLinks.delete(token);
     }
   }
-  
+
   // Clean inactive device sessions (older than 30 days)
   for (const [deviceId, session] of deviceSessions.entries()) {
     if (now - session.lastSeen > 30 * 24 * 60 * 60 * 1000) {
@@ -113,7 +113,7 @@ io.use((socket, next) => {
   if (!token) {
     return next(new Error('Authentication required'));
   }
-  
+
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
     socket.deviceId = decoded.deviceId;
@@ -127,18 +127,18 @@ io.use((socket, next) => {
 // Socket.IO connection handling
 io.on('connection', (socket) => {
   const { deviceId, identityKey } = socket;
-  
+
   console.log(`Device connected: ${deviceId}`);
-  
+
   // Register connection
   connectionMap.set(deviceId, socket.id);
-  
+
   // Update device session
   deviceSessions.set(deviceId, {
     identityKey,
     lastSeen: Date.now()
   });
-  
+
   // Send queued messages
   const queuedMessages = messageQueue.get(deviceId) || [];
   if (queuedMessages.length > 0) {
@@ -147,11 +147,11 @@ io.on('connection', (socket) => {
     });
     messageQueue.delete(deviceId);
   }
-  
+
   // Handle outgoing messages
   socket.on('send-message', (data) => {
     const { recipientDeviceId, encryptedPayload, messageId, groupId } = data;
-    
+
     const message = {
       messageId,
       senderDeviceId: deviceId,
@@ -159,7 +159,7 @@ io.on('connection', (socket) => {
       timestamp: Date.now(),
       groupId: groupId || null
     };
-    
+
     // Try to deliver immediately
     const recipientSocketId = connectionMap.get(recipientDeviceId);
     if (recipientSocketId) {
@@ -171,16 +171,16 @@ io.on('connection', (socket) => {
       }
       messageQueue.get(recipientDeviceId).push(message);
     }
-    
+
     // Send acknowledgment
     socket.emit('message-sent', { messageId, timestamp: message.timestamp });
   });
-  
+
   // Handle typing indicators
   socket.on('typing', (data) => {
     const { recipientDeviceId, conversationId, isTyping } = data;
     const recipientSocketId = connectionMap.get(recipientDeviceId);
-    
+
     if (recipientSocketId) {
       io.to(recipientSocketId).emit('typing-indicator', {
         senderDeviceId: deviceId,
@@ -189,12 +189,12 @@ io.on('connection', (socket) => {
       });
     }
   });
-  
+
   // Handle delivery receipts
   socket.on('message-delivered', (data) => {
     const { messageId, senderDeviceId } = data;
     const senderSocketId = connectionMap.get(senderDeviceId);
-    
+
     if (senderSocketId) {
       io.to(senderSocketId).emit('delivery-receipt', {
         messageId,
@@ -204,12 +204,12 @@ io.on('connection', (socket) => {
       });
     }
   });
-  
+
   // Handle read receipts
   socket.on('message-read', (data) => {
     const { messageId, senderDeviceId } = data;
     const senderSocketId = connectionMap.get(senderDeviceId);
-    
+
     if (senderSocketId) {
       io.to(senderSocketId).emit('read-receipt', {
         messageId,
@@ -219,7 +219,7 @@ io.on('connection', (socket) => {
       });
     }
   });
-  
+
   // Handle disconnection
   socket.on('disconnect', () => {
     console.log(`Device disconnected: ${deviceId}`);
@@ -235,8 +235,8 @@ io.on('connection', (socket) => {
 
 // Health check
 app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'ok', 
+  res.json({
+    status: 'ok',
     timestamp: Date.now(),
     connections: connectionMap.size,
     queuedMessages: Array.from(messageQueue.values()).reduce((sum, msgs) => sum + msgs.length, 0)
@@ -247,25 +247,25 @@ app.get('/health', (req, res) => {
 app.post('/api/auth/request-magic-link', async (req, res) => {
   try {
     const { email, deviceId, identityKey } = req.body;
-    
+
     if (!email || !deviceId || !identityKey) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
-    
+
     // Generate magic link token
     const token = uuidv4();
     const expires = Date.now() + parseInt(process.env.MAGIC_LINK_EXPIRY || 900000); // 15 minutes
-    
+
     pendingMagicLinks.set(token, {
       email,
       deviceId,
       identityKey,
       expires
     });
-    
+
     // Send email
     const magicLink = `${FRONTEND_URL}/auth/verify?token=${token}`;
-    
+
     try {
       await resend.emails.send({
         from: process.env.EMAIL_FROM || 'noreply@b2g-vault.com',
@@ -310,9 +310,9 @@ app.post('/api/auth/request-magic-link', async (req, res) => {
           </html>
         `
       });
-      
-      res.json({ 
-        success: true, 
+
+      res.json({
+        success: true,
         message: 'Magic link sent to your email',
         expiresIn: 900 // seconds
       });
@@ -330,22 +330,22 @@ app.post('/api/auth/request-magic-link', async (req, res) => {
 app.post('/api/auth/verify-magic-link', (req, res) => {
   try {
     const { token } = req.body;
-    
+
     if (!token) {
       return res.status(400).json({ error: 'Token required' });
     }
-    
+
     const linkData = pendingMagicLinks.get(token);
-    
+
     if (!linkData) {
       return res.status(404).json({ error: 'Invalid or expired token' });
     }
-    
+
     if (Date.now() > linkData.expires) {
       pendingMagicLinks.delete(token);
       return res.status(410).json({ error: 'Token expired' });
     }
-    
+
     // Generate JWT
     const authToken = jwt.sign(
       {
@@ -356,10 +356,10 @@ app.post('/api/auth/verify-magic-link', (req, res) => {
       JWT_SECRET,
       { expiresIn: '30d' }
     );
-    
+
     // Clean up magic link
     pendingMagicLinks.delete(token);
-    
+
     res.json({
       success: true,
       token: authToken,
@@ -375,7 +375,7 @@ app.post('/api/auth/verify-magic-link', (req, res) => {
 // Get device info (for multi-device)
 app.get('/api/devices/:identityKey', (req, res) => {
   const { identityKey } = req.params;
-  
+
   const devices = Array.from(deviceSessions.entries())
     .filter(([_, session]) => session.identityKey === identityKey)
     .map(([deviceId, session]) => ({
@@ -383,14 +383,14 @@ app.get('/api/devices/:identityKey', (req, res) => {
       lastSeen: session.lastSeen,
       isOnline: connectionMap.has(deviceId)
     }));
-  
+
   res.json({ devices });
 });
 
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
   });
 }
 
