@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: vault-secure-messaging
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && cd client && npm install && npm run build && cd ../server && npm install
+    startCommand: cd server && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: FRONTEND_URL
+        value: https://b2g-vault.com
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        value: noreply@b2g-vault.com
+      - key: EMAIL_SERVICE
+        value: resend
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        value: https://b2g-vault.com
+      - key: MAGIC_LINK_EXPIRY
+        value: 900000
+      - key: MAX_MESSAGE_TTL
+        value: 86400000
+    healthCheckPath: /health
+    domains:
+      - b2g-vault.com

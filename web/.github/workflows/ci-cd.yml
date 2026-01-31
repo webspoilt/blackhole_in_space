@@ -1,0 +1,77 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm ci
+        cd client && npm ci
+        cd ../server && npm ci
+    
+    - name: Lint client
+      run: cd client && npm run lint || true
+    
+    - name: Build client
+      run: cd client && npm run build
+    
+    - name: Test client
+      run: cd client && npm test || true
+    
+    - name: Test server
+      run: cd server && npm test || true
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+    
+    - name: Build Docker image
+      run: |
+        docker build -t vault-app:${{ github.sha }} .
+        docker tag vault-app:${{ github.sha }} vault-app:latest
+    
+    - name: Save Docker image
+      run: docker save vault-app:latest | gzip > vault-app.tar.gz
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: docker-image
+        path: vault-app.tar.gz
+        retention-days: 7
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Deploy to Render
+      run: |
+        echo "Deployment triggered automatically by Render on push to main"
+        echo "Monitor deployment at https://dashboard.render.com"

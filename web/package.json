@@ -1,0 +1,28 @@
+{
+  "name": "vault-secure-messaging",
+  "version": "1.0.0",
+  "description": "Military-grade secure messaging platform with E2E encryption",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && node --watch server.js",
+    "dev:client": "cd client && vite",
+    "build": "cd client && vite build",
+    "build:server": "cd server && npm install",
+    "start": "cd server && node server.js",
+    "preview": "cd client && vite preview"
+  },
+  "keywords": [
+    "encryption",
+    "messaging",
+    "e2e",
+    "signal-protocol",
+    "secure",
+    "vault"
+  ],
+  "author": "b2g-vault",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
