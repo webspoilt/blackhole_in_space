@@ -1,42 +1,58 @@
-# 🔐 VAULT
+<div align="center">
 
-<p align="center">
-  <img src="branding/vault-logo-full.png" width="200" alt="VAULT">
-</p>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=200&section=header&text=VAULT&fontSize=70&fontColor=00D9FF&animation=fadeIn&fontAlignY=35&desc=Secure%20Messaging%20for%20Mission-Critical%20Operations&descAlignY=55&descSize=16"/>
 
-<p align="center">
-  <b>The Secure Messaging Platform for Regulated Industries</b><br>
-  <b>(Verifiable Audit & Immutable Audit Log)</b><br>
-  <i>Sovereign Infrastructure. Post-Quantum Security. Total Control.</i>
-</p>
+<img src="branding/vault-logo-full.png" width="180" alt="VAULT Logo">
 
-<p align="center">
-  <a href="#features"><img src="https://img.shields.io/badge/Security-Enterprise%20Grade-blue?style=for-the-badge" alt="Security"></a>
-  <a href="#compliance"><img src="https://img.shields.io/badge/Compliance-GDPR%20%7C%20SOC2-green.svg?style=for-the-badge" alt="Compliance"></a>
-  <a href="#cryptography"><img src="https://img.shields.io/badge/Crypto-Post%20Quantum%20Ready-purple?style=for-the-badge" alt="Crypto"></a>
-</p>
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)]()
+[![Security](https://img.shields.io/badge/Security-Enterprise-FF006E?style=for-the-badge)]()
+[![E2EE](https://img.shields.io/badge/E2EE-Enabled-00C853?style=for-the-badge)]()
+[![Made in India](https://img.shields.io/badge/Made%20in-India%20🇮🇳-orange?style=for-the-badge)]()
+
+**B2G | Enterprise | Government-Grade Security**
+
+[Website](https://vault.in) • [Documentation](./docs/) • [Security](./SECURITY.md) • [Contributing](./CONTRIBUTING.md)
+
+</div>
 
 ---
 
-## 🌌 Overview
+## 🎯 Overview
 
-**VAULT** is a high-security messaging platform designed for government agencies, defense contractors, and enterprises requiring data sovereignty. 
+**VAULT** *(Verifiable Audit & Immutable Audit Log)* is an enterprise-grade secure messaging platform designed for **government (B2G)** and **business-critical communications**.
 
-Unlike consumer apps that mine data, VAULT ensures that messages are mathematically inaccessible to unauthorized parties—including the server administrators. We combine **Zero-Knowledge architecture** with **Configurable Auditability**, allowing organizations to balance privacy with legal compliance.
+Unlike consumer apps that mine data, VAULT ensures that messages are mathematically inaccessible to unauthorized parties—including server administrators. We combine **Zero-Knowledge architecture** with **Configurable Auditability**, allowing organizations to balance privacy with legal compliance.
 
-### Core Value Proposition
+---
 
-- 🛡️ **Sovereign Deployment:** Deploy on-premise or in your private cloud. Data never leaves your jurisdiction.
-- 🔐 **End-to-End Encryption:** Signal Protocol + MLS (Messaging Layer Security) for groups.
-- 🧮 **Future-Proof:** Post-Quantum cryptography (ML-KEM-768) hybridized with modern elliptic curves.
-- 📜 **Audit Ready:** Configurable retention policies to meet FOIA, GDPR, and HIPAA requirements.
-- 🚫 **Zero-Access:** Server operators cannot read message content.
+## 🔐 Security Features
+
+| Feature | Implementation |
+|---------|----------------|
+| **Encryption** | AES-256-GCM with perfect forward secrecy |
+| **Key Exchange** | X25519 + ML-KEM-768 (Post-Quantum Hybrid) |
+| **Protocol** | Signal Protocol + MLS for groups |
+| **Authentication** | Multi-factor with hardware tokens (TPM/HSM) |
+| **Compliance** | GDPR, SOC 2, HIPAA aligned* |
+| **Audit** | Tamper-evident immutable audit logs |
+
+> *Compliance certifications are in progress. Contact sales for current status.
+
+---
+
+## ✨ Key Features
+
+- 🔒 **End-to-End Encryption** — Messages encrypted on device, never on server
+- 🏢 **Sovereign Deployment** — On-premise or private cloud, data never leaves your jurisdiction
+- 📎 **Secure File Sharing** — Encrypted attachments up to 1GB
+- 📹 **Encrypted Voice/Video** — P2P encrypted calls
+- 🔔 **Self-Destructing Messages** — Time-based message expiry
+- 🌐 **Air-Gapped Support** — Offline deployment option for secure networks
+- 📜 **Audit Ready** — Configurable retention for FOIA, GDPR, HIPAA requirements
 
 ---
 
 ## 🏗️ Architecture
-
-VAULT utilizes a polyglot architecture optimized for security (Rust) and throughput (Go).
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
@@ -82,7 +98,8 @@ vault/
 │   ├── core/       # Rust Cryptography Library
 │   └── server/     # Go Relay & API Server
 ├── helm/           # Kubernetes Helm Charts
-├── docs/           # Technical Specifications & Security Audits
+├── branding/       # Logo and brand assets
+├── docs/           # Technical Specifications
 └── docker-compose.yml
 ```
 
@@ -90,97 +107,73 @@ vault/
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- [Rust](https://rustup.rs/) (1.70+)
-- [Go](https://golang.org/dl/) (1.21+)
-- [Node.js](https://nodejs.org/) (20+)
-- [Docker](https://docker.com/) / [Kubernetes](https://kubernetes.io/)
-
-### Local Development
-
 ```bash
-# 1. Clone the repository
+# Clone repository
 git clone https://github.com/webspoilt/vault.git
 cd vault
 
-# 2. Initialize Environment
+# Setup environment
 cp .env.example .env
-# Edit .env with your configuration
 
-# 3. Start Services (Using Docker)
+# Start with Docker
 docker-compose up -d
 
-# 4. Build Web Client
-cd web && npm install && npm run dev
-
-# Access Web Interface at http://localhost:3000
+# Or run homepage locally
+cd homepage && npm install && npm run dev
 ```
 
----
-
-## 🔐 Security & Compliance
-
-VAULT is built around a defense-in-depth strategy. We do not rely on "security by obscurity."
-
-### Cryptographic Primitives
-
-| Component | Algorithm | Purpose |
-|-----------|-----------|---------|
-| Identity | Ed25519 | Digital Signatures |
-| Key Exchange | X25519 + ML-KEM-768 | Hybrid PQ Key Agreement |
-| Encryption | AES-256-GCM | Payload Encryption |
-| Hashing | SHA3-256 | Integrity Checks |
-| Group Logic | MLS (Messaging Layer Security) | Efficient Group Encryption |
-
-### Compliance Features
-
-- **Audit Logging:** Tamper-evident logs for administrative actions.
-- **Data Retention:** Configurable Time-To-Live (TTL) policies per channel.
-- **Access Control:** Role-Based Access Control (RBAC) integration.
-- **Data Sovereignty:** Guaranteed data residency within your infrastructure.
+Access at: `http://localhost:3000`
 
 ---
 
 ## 🛣️ Roadmap
 
-- [ ] FIPS 140-2 Validation (In Progress)
-- [ ] FedRAMP Authorization (Pending)
-- [ ] Advanced Threat Protection Integration
-- [ ] SIPRNet Gateway Support
+| Milestone | Status |
+|-----------|--------|
+| FIPS 140-2 Validation | 🟡 In Progress |
+| FedRAMP Authorization | 📋 Roadmap |
+| SOC 2 Type II | 📋 Roadmap |
+| SIPRNet Gateway | 📋 Roadmap |
 
 ---
 
 ## 🤝 Contributing
 
-We welcome security researchers and developers. Please review our [Security Policy](SECURITY.md) before contributing.
+We welcome security researchers and developers!
 
 ```bash
-# Fork and clone
-git clone https://github.com/webspoilt/vault.git
-
-# Create feature branch
 git checkout -b feature/amazing-feature
-
-# Run Linting & Tests
-cd backend/core && cargo test --release
-cd ../server && go test ./...
-cd ../../web && npm run test
-
-# Submit Pull Request
+# Make changes
+git commit -m "feat: add amazing feature"
+git push origin feature/amazing-feature
 ```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
-## 📜 License
+## 📞 Contact
+
+| | |
+|---|---|
+| 🏢 **Office** | Embassy Tech Village, Bengaluru 560103, India |
+| 📧 **Email** | contact@vault.in |
+| 🔒 **Security** | security@vault.in |
+| 🐙 **GitHub** | [github.com/webspoilt/vault](https://github.com/webspoilt/vault) |
+
+---
+
+## 📄 License
 
 Proprietary for Enterprise / Commercial Use.  
 See [LICENSE](LICENSE) for details. Core libraries may be available under MIT.
 
 ---
 
-<p align="center">
-  <b>🔐 VAULT</b><br>
-  <i>Secure Communications for a Sovereign World</i><br><br>
-  Built by <b>zeroday</b> 🔐
-</p>
+<div align="center">
+
+**Made with ❤️ in India 🇮🇳**
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f3460,50:16213e,100:1a1a2e&height=100&section=footer"/>
+
+</div>
