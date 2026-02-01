@@ -16,7 +16,8 @@ export const metadata: Metadata = {
   keywords: ["secure messaging", "government communications", "FIPS 140-2", "FedRAMP", "on-premise", "zero trust"],
   authors: [{ name: "VAULT Enterprise" }],
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
