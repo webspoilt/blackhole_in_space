@@ -434,6 +434,8 @@ MIT License - See [LICENSE](../LICENSE) for details.
 - [ ] watchOS companion app
 - [ ] Widget support
 - [ ] Siri shortcuts
+- [x] **MDM Support** (Managed App Configuration, deployment profiles)
+- [x] **Volume Purchasing** (App Store Connect for Business/Education)
 
 ---
 

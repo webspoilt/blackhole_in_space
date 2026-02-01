@@ -1,0 +1,27 @@
+apiVersion: v2
+name: vault-enterprise
+description: VAULT Enterprise - Secure Messaging Platform for Government & Defense
+type: application
+version: 1.0.0
+appVersion: "4.2.0"
+keywords:
+  - secure-messaging
+  - e2e-encryption
+  - government
+  - fedramp
+  - air-gapped
+home: https://b2g-vault.vercel.app
+sources:
+  - https://github.com/webspoilt/vault
+maintainers:
+  - name: VAULT Enterprise Team
+    email: support@vault.gov
+dependencies:
+  - name: postgresql
+    version: "12.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
+  - name: redis
+    version: "17.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: redis.enabled

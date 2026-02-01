@@ -1,0 +1,174 @@
+# VAULT Enterprise - Default Values
+# This file contains the default configuration values for the VAULT Helm chart.
+# Override these values in your environment-specific values file.
+
+# =============================================================================
+# GLOBAL SETTINGS
+# =============================================================================
+global:
+  # Image pull secrets for private registries (air-gapped environments)
+  imagePullSecrets: []
+  # Storage class for persistent volumes
+  storageClass: "standard"
+
+# =============================================================================
+# VAULT RELAY SERVER
+# =============================================================================
+relay:
+  replicaCount: 3
+  
+  image:
+    repository: vault-enterprise/relay
+    tag: "4.2.0"
+    pullPolicy: IfNotPresent
+  
+  # Resource limits (adjust for your environment)
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "512Mi"
+    limits:
+      cpu: "2000m"
+      memory: "2Gi"
+  
+  # Service configuration
+  service:
+    type: ClusterIP
+    port: 443
+    annotations: {}
+  
+  # Ingress configuration
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    hosts:
+      - host: vault.your-agency.gov
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: vault-tls
+        hosts:
+          - vault.your-agency.gov
+
+  # Environment variables
+  env:
+    LOG_LEVEL: "info"
+    MESSAGE_TTL_HOURS: "24"
+    ENABLE_SEALED_SENDER: "true"
+
+# =============================================================================
+# VAULT CRYPTO CORE (Rust)
+# =============================================================================
+core:
+  replicaCount: 2
+  
+  image:
+    repository: vault-enterprise/crypto-core
+    tag: "4.2.0"
+    pullPolicy: IfNotPresent
+  
+  resources:
+    requests:
+      cpu: "1000m"
+      memory: "1Gi"
+    limits:
+      cpu: "4000m"
+      memory: "4Gi"
+
+# =============================================================================
+# DATABASE (PostgreSQL)
+# =============================================================================
+postgresql:
+  enabled: true
+  auth:
+    username: vault
+    database: vault_audit
+    # Use existingSecret for production
+    existingSecret: "vault-db-secret"
+  primary:
+    persistence:
+      enabled: true
+      size: 100Gi
+      storageClass: "encrypted-ssd"
+  # For air-gapped: use internal registry
+  image:
+    registry: your-internal-registry.gov
+
+# =============================================================================
+# REDIS (Session Cache)
+# =============================================================================
+redis:
+  enabled: true
+  architecture: replication
+  auth:
+    enabled: true
+    existingSecret: "vault-redis-secret"
+
+# =============================================================================
+# SECURITY & COMPLIANCE
+# =============================================================================
+security:
+  # Pod Security Standards
+  podSecurityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    fsGroup: 1000
+  
+  # Network Policies
+  networkPolicy:
+    enabled: true
+    # Allow only internal cluster traffic
+    ingress:
+      - from:
+          - namespaceSelector:
+              matchLabels:
+                name: vault-system
+  
+  # TLS Configuration
+  tls:
+    enabled: true
+    # Use cert-manager for automatic certificate management
+    certManager:
+      enabled: true
+      issuerRef:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+
+# =============================================================================
+# MONITORING & AUDIT
+# =============================================================================
+monitoring:
+  # Prometheus metrics
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      interval: 30s
+  
+  # Immutable Audit Log export
+  auditLog:
+    enabled: true
+    # Export to SIEM (Splunk, Elastic)
+    siem:
+      enabled: false
+      endpoint: "https://your-siem.gov/api/logs"
+      secretName: "siem-api-key"
+
+# =============================================================================
+# AIR-GAPPED DEPLOYMENT
+# =============================================================================
+airgap:
+  enabled: false
+  # Use local registry for all images
+  registry: "registry.local:5000"
+  # Pre-loaded images (for offline installation)
+  preloadedImages:
+    - vault-enterprise/relay:4.2.0
+    - vault-enterprise/crypto-core:4.2.0
+    - bitnami/postgresql:15
+    - bitnami/redis:7

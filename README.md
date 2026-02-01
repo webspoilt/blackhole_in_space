@@ -6,7 +6,7 @@
 
 <p align="center">
   <b>The Secure Messaging Platform That Swallows All Traces</b><br>
-  <b>(Verifiable Audit & Unified Ledger Technologies)</b><br>
+  <b>(Verifiable Audit & Immutable Audit Log)</b><br>
   <i>What enters the VAULT, never leaves. Not even light. Not even hackers.</i>
 </p>
 

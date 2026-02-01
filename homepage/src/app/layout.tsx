@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'VAULT - Verifiable Audit & Unified Ledger Technologies',
+  title: 'VAULT - Verifiable Audit & Immutable Audit Log',
   description: 'Military-grade secure messaging for Government and Enterprise. FIPS 140-2 Validated, FedRAMP Ready, Zero Unauthorized Traces.',
   keywords: ["secure messaging", "government communications", "FIPS 140-2", "FedRAMP", "on-premise", "zero trust"],
   authors: [{ name: "VAULT Enterprise" }],
