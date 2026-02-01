@@ -47,8 +47,8 @@ export default function ContactSalesPage() {
                                 <Building className="w-6 h-6 text-blue-400" />
                             </div>
                             <div>
-                                <h3 className="text-white font-semibold text-lg mb-1">Headquarters</h3>
-                                <p className="text-gray-400">123 Defense Way, Suite 400<br />Arlington, VA 22209</p>
+                                <h3 className="text-white font-semibold text-lg mb-1">India Headquarters</h3>
+                                <p className="text-gray-400">Embassy Tech Village, Block B<br />Outer Ring Road, Bengaluru 560103<br />Karnataka, India</p>
                             </div>
                         </div>
 
@@ -57,9 +57,9 @@ export default function ContactSalesPage() {
                                 <Phone className="w-6 h-6 text-blue-400" />
                             </div>
                             <div>
-                                <h3 className="text-white font-semibold text-lg mb-1">Federal Sales Line</h3>
-                                <p className="text-gray-400">+1 (888) 555-0199</p>
-                                <p className="text-sm text-gray-500 mt-1">Available 24/7 for critical inquiries</p>
+                                <h3 className="text-white font-semibold text-lg mb-1">Enterprise Sales</h3>
+                                <p className="text-gray-400">+91 80 4567 8900</p>
+                                <p className="text-sm text-gray-500 mt-1">Mon-Sat 9:00 AM - 7:00 PM IST</p>
                             </div>
                         </div>
 
@@ -69,8 +69,8 @@ export default function ContactSalesPage() {
                             </div>
                             <div>
                                 <h3 className="text-white font-semibold text-lg mb-1">Email</h3>
-                                <p className="text-gray-400">sales@vault.messaging</p>
-                                <p className="text-gray-400">gov@vault.messaging (SIPR/NIPR available on request)</p>
+                                <p className="text-gray-400">sales@vault.in</p>
+                                <p className="text-gray-400">enterprise@vault.in (For Government & Defence)</p>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ export default function ContactSalesPage() {
                                 type="email"
                                 required
                                 className="w-full px-4 py-3 bg-[#0a0f1a] border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
-                                placeholder="name@agency.gov"
+                                placeholder="name@gov.in"
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
                         </div>
@@ -119,7 +119,7 @@ export default function ContactSalesPage() {
                                 type="text"
                                 required
                                 className="w-full px-4 py-3 bg-[#0a0f1a] border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
-                                placeholder="Department of Defense"
+                                placeholder="Ministry of Defence / Infosys / TCS"
                                 onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                             />
                         </div>
@@ -130,9 +130,11 @@ export default function ContactSalesPage() {
                                 className="w-full px-4 py-3 bg-[#0a0f1a] border border-white/10 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                                 onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                             >
-                                <option value="government">Federal Government</option>
-                                <option value="defense">Defense / Intelligence</option>
+                                <option value="government">Central/State Government</option>
+                                <option value="defense">Defence / DRDO / Armed Forces</option>
                                 <option value="enterprise">Enterprise (500+ users)</option>
+                                <option value="bfsi">BFSI (Banking & Finance)</option>
+                                <option value="it">IT / Technology</option>
                                 <option value="healthcare">Healthcare</option>
                                 <option value="other">Other</option>
                             </select>
