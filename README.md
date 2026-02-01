@@ -66,11 +66,16 @@
 
 ```
 vault/
-├── core/           # Rust cryptographic engine (WASM)
-├── server/         # Go relay server
-├── web/            # React web client
-├── homepage/       # Next.js marketing site
-├── monitoring/     # Prometheus/Grafana configs
+├── backend/        # Core platform backend (Rust/Go)
+│   ├── core/       # Rust cryptographic engine
+│   ├── server/     # Go relay server
+├── desktop/        # Native Desktop Apps
+│   ├── macos/      # MacOS Build
+│   ├── linux/      # Linux Build
+│   ├── windows/    # Windows Build
+├── web/            # Web Applications
+│   ├── landing-page/ # Next.js Marketing Site (Vercel)
+│   ├── client/     # React Web App (Vite)
 ├── .github/        # CI/CD workflows
 └── docker-compose.yml
 ```
@@ -94,13 +99,13 @@ git clone https://github.com/webspoilt/vault.git
 cd vault
 
 # Build Rust crypto core
-cd core && cargo build --release && cd ..
+cd backend/core && cargo build --release && cd ../..
 
 # Build Go relay server
-cd server && go build -o vault-relay ./cmd/relay && cd ..
+cd backend/server && go build -o vault-relay ./cmd/relay && cd ../..
 
 # Build web client
-cd web && npm install && npm run build && cd ..
+cd web/client && npm install && npm run build && cd ../..
 
 # Or use Docker
 docker-compose up -d
