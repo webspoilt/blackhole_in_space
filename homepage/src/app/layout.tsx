@@ -15,9 +15,16 @@ export const metadata: Metadata = {
   description: 'Military-grade secure messaging for Government and Enterprise. FIPS 140-2 Validated, FedRAMP Ready, Zero Unauthorized Traces.',
   keywords: ["secure messaging", "government communications", "FIPS 140-2", "FedRAMP", "on-premise", "zero trust"],
   authors: [{ name: "VAULT Enterprise" }],
+  manifest: "/manifest.json",
+  themeColor: "#0a0a0a",
   icons: {
     icon: "/favicon.png",
-    apple: "/favicon.png",
+    apple: "/vault-icon-192.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "VAULT",
   },
 };
 

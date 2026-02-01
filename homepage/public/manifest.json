@@ -1,0 +1,36 @@
+{
+    "name": "VAULT",
+    "short_name": "VAULT",
+    "description": "Secure Messaging Platform for Government & Enterprise",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#0a0a0a",
+    "background_color": "#0a0a0a",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/vault-icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/vault-icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/favicon.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "business",
+        "security",
+        "productivity"
+    ],
+    "lang": "en-US",
+    "scope": "/"
+}
