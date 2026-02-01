@@ -1,7 +1,7 @@
 # 🔐 VAULT
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/webspoilt/vault/main/assets/vault-logo.svg" width="180" alt="VAULT">
+  <img src="branding/vault-logo-full.png" width="200" alt="VAULT">
 </p>
 
 <p align="center">
