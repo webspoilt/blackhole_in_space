@@ -233,7 +233,7 @@ All cryptographic code must:
 **DO NOT** create public issues for security vulnerabilities.
 
 Instead:
-- Email: security@vault.messaging
+- Email: security@vault.in
 - Include detailed reproduction steps
 - Allow 90 days for disclosure
 
