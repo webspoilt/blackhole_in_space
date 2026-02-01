@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>ResendAPIKey</key>
+    <string>re_YOUR_RESEND_API_KEY</string>
+    <key>SenderEmail</key>
+    <string>noreply@b2g-vault</string>
+    <key>RelayServerWebSocket</key>
+    <string>wss://vault-relay.onrender.com/v1/stream</string>
+    <key>RelayServerAPI</key>
+    <string>https://vault-relay.onrender.com/v1</string>
+    <key>Environment</key>
+    <string>production</string>
+</dict>
+</plist>

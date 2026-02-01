@@ -1,0 +1,16 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Primary Colors -->
+    <SolidColorBrush x:Key="PrimaryColor" Color="#6200EA"/>
+    <SolidColorBrush x:Key="PrimaryDarkColor" Color="#3700B3"/>
+    <SolidColorBrush x:Key="PrimaryLightColor" Color="#BB86FC"/>
+    
+    <!-- Secondary Colors -->
+    <SolidColorBrush x:Key="SecondaryColor" Color="#03DAC6"/>
+    <SolidColorBrush x:Key="SecondaryDarkColor" Color="#018786"/>
+    
+    <!-- Background Colors -->
+    <SolidColorBrush x:Key="BackgroundColor" Color="#121212"/>
+    <SolidColorBrush x:Key="SurfaceColor" Color="#1E1E1E"/>
+    <SolidColorBrush x:Key="ErrorColor" Color="#CF6679"/>
+</ResourceDictionary>

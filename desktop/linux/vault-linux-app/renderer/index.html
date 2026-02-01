@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;">
+  <title>VAULT Messenger</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1 class="logo">🔒 VAULT</h1>
+          <p class="tagline">Military-Grade Secure Messaging</p>
+        </div>
+        
+        <div class="auth-form">
+          <h2>Sign In</h2>
+          
+          <div class="form-group">
+            <input type="text" id="login-username" placeholder="Username" autocomplete="username">
+          </div>
+          
+          <div class="form-group">
+            <input type="password" id="login-password" placeholder="Password" autocomplete="current-password">
+          </div>
+          
+          <button id="login-btn" class="btn btn-primary">Sign In</button>
+          
+          <div class="form-links">
+            <a href="#" id="show-register">Create Account</a>
+            <a href="#" id="forgot-password">Forgot Password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Screen -->
+    <div id="register-screen" class="screen">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1 class="logo">🔒 VAULT</h1>
+          <p class="tagline">Join the Most Secure Platform</p>
+        </div>
+        
+        <div class="auth-form">
+          <h2>Create Account</h2>
+          
+          <div class="form-group">
+            <input type="text" id="register-username" placeholder="Username" autocomplete="username">
+          </div>
+          
+          <div class="form-group">
+            <input type="email" id="register-email" placeholder="Email" autocomplete="email">
+          </div>
+          
+          <div class="form-group">
+            <input type="password" id="register-password" placeholder="Password" autocomplete="new-password">
+          </div>
+          
+          <div class="form-group">
+            <input type="password" id="register-password-confirm" placeholder="Confirm Password" autocomplete="new-password">
+          </div>
+          
+          <button id="register-btn" class="btn btn-primary">Create Account</button>
+          
+          <div class="form-links">
+            <a href="#" id="show-login">Already have an account?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verification Screen -->
+    <div id="verification-screen" class="screen">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1 class="logo">🔒 VAULT</h1>
+          <p class="tagline">Verify Your Email</p>
+        </div>
+        
+        <div class="auth-form">
+          <h2>Enter Verification Code</h2>
+          <p>We've sent a 6-digit code to your email</p>
+          
+          <div class="form-group">
+            <input type="text" id="verification-code" placeholder="000000" maxlength="6">
+          </div>
+          
+          <button id="verify-btn" class="btn btn-primary">Verify</button>
+          
+          <div class="form-links">
+            <a href="#" id="resend-code">Resend Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main App Screen -->
+    <div id="main-screen" class="screen">
+      <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="sidebar-header">
+            <h2>VAULT</h2>
+            <button id="settings-btn" class="icon-btn">⚙️</button>
+          </div>
+          
+          <div class="search-bar">
+            <input type="text" id="search-conversations" placeholder="Search...">
+          </div>
+          
+          <div class="conversations-list" id="conversations-list">
+            <!-- Conversations will be populated here -->
+          </div>
+          
+          <div class="sidebar-footer">
+            <div class="user-info">
+              <div class="user-avatar">👤</div>
+              <div class="user-details">
+                <div class="user-name" id="current-user-name">Username</div>
+                <div class="user-status">🟢 Online</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area">
+          <div class="chat-header">
+            <div class="chat-recipient-info">
+              <div class="recipient-avatar">👤</div>
+              <div class="recipient-details">
+                <div class="recipient-name" id="chat-recipient-name">Select a conversation</div>
+                <div class="recipient-status" id="chat-recipient-status"></div>
+              </div>
+            </div>
+            
+            <div class="chat-actions">
+              <button class="icon-btn" id="voice-call-btn" title="Voice Call">📞</button>
+              <button class="icon-btn" id="video-call-btn" title="Video Call">📹</button>
+              <button class="icon-btn" id="chat-info-btn" title="Info">ℹ️</button>
+            </div>
+          </div>
+          
+          <div class="messages-container" id="messages-container">
+            <div class="no-conversation-selected">
+              <div class="empty-state">
+                <h3>🔒 VAULT Messenger</h3>
+                <p>Select a conversation to start messaging</p>
+                <p class="security-badge">End-to-End Encrypted</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="message-input-container">
+            <button class="icon-btn" id="attach-file-btn" title="Attach File">📎</button>
+            <input type="file" id="file-input" style="display: none;" multiple>
+            
+            <div class="message-input-wrapper">
+              <textarea 
+                id="message-input" 
+                placeholder="Type a message..." 
+                rows="1"
+              ></textarea>
+            </div>
+            
+            <button class="icon-btn" id="emoji-btn" title="Emoji">😊</button>
+            <button class="icon-btn btn-primary" id="send-message-btn" title="Send">➤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="overlay hidden">
+    <div class="spinner"></div>
+    <p id="loading-text">Loading...</p>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

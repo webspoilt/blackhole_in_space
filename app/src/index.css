@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 4%;
+    --foreground: 220 20% 97%;
+    --card: 222 35% 7%;
+    --card-foreground: 220 20% 97%;
+    --popover: 222 35% 7%;
+    --popover-foreground: 220 20% 97%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 222 47% 4%;
+    --secondary: 222 25% 12%;
+    --secondary-foreground: 220 20% 97%;
+    --muted: 222 25% 12%;
+    --muted-foreground: 220 15% 68%;
+    --accent: 142 71% 45%;
+    --accent-foreground: 222 47% 4%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 142 71% 45%;
+    --radius: 0.75rem;
+    
+    --forticomm-bg: #070A12;
+    --forticomm-bg-secondary: #0C1222;
+    --forticomm-accent: #16A34A;
+    --forticomm-text: #F2F5FA;
+    --forticomm-text-secondary: #A7B1C6;
+    --forticomm-surface-blue: rgba(30, 64, 175, 0.18);
+    --forticomm-surface-green: rgba(22, 163, 74, 0.12);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#070A12] text-[#F2F5FA] antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+    letter-spacing: 0.02em;
+  }
+  
+  code, pre, .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer components {
+  .forticomm-card {
+    @apply bg-[#0C1222] border border-[rgba(167,177,198,0.12)] rounded-[18px];
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  }
+  
+  .forticomm-glow {
+    box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.35);
+  }
+  
+  .forticomm-button-primary {
+    @apply bg-[#16A34A] text-[#070A12] font-semibold px-6 py-3 rounded-full 
+           hover:bg-[#22c55e] transition-all duration-300 
+           hover:shadow-[0_0_20px_rgba(22,163,74,0.4)];
+  }
+  
+  .forticomm-button-secondary {
+    @apply border border-[rgba(167,177,198,0.25)] text-[#F2F5FA] font-medium 
+           px-6 py-3 rounded-full hover:border-[#16A34A] hover:text-[#16A34A] 
+           transition-all duration-300;
+  }
+  
+  .forticomm-badge {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full 
+           bg-[rgba(22,163,74,0.12)] text-[#16A34A] text-sm font-medium;
+  }
+  
+  .forticomm-badge-secondary {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full 
+           bg-[rgba(167,177,198,0.1)] text-[#A7B1C6] text-sm font-medium;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#16A34A] to-[#22c55e] bg-clip-text text-transparent;
+  }
+  
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  
+  .scan-line {
+    @apply absolute h-[2px] bg-[rgba(22,163,74,0.9)];
+    box-shadow: 0 0 18px rgba(22, 163, 74, 0.6);
+  }
+  
+  .security-pulse {
+    animation: securityPulse 2.2s ease-in-out infinite;
+  }
+  
+  @keyframes securityPulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% { 
+      transform: scale(1.15);
+      opacity: 0.7;
+    }
+  }
+  
+  .progress-ring-circle {
+    transition: stroke-dashoffset 0.8s ease-out;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom scrollbar for the app */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070A12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(22, 163, 74, 0.3);
+  color: #F2F5FA;
+}
