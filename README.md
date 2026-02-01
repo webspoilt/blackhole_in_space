@@ -73,6 +73,9 @@ vault/
 │   ├── macos/      # MacOS Build
 │   ├── linux/      # Linux Build
 │   ├── windows/    # Windows Build
+├── mobile/         # Mobile Apps
+│   ├── ios/        # iOS App (Swift/React Native)
+│   ├── android/    # Android App
 ├── web/            # Web Applications
 │   ├── landing-page/ # Next.js Marketing Site (Vercel)
 │   ├── client/     # React Web App (Vite)
