@@ -74,8 +74,8 @@ vault/
 │   ├── linux/      # Linux Build
 │   ├── windows/    # Windows Build
 ├── mobile/         # Mobile Apps
-│   ├── ios/        # iOS App (Swift/React Native)
-│   ├── android/    # Android App (Kotlin/Java)
+│   ├── VaultiOS/     # iOS App (Swift)
+│   ├── VaultAndroid/ # Android App (Kotlin/Java)
 ├── homepage/       # Next.js Marketing Site (Vercel)
 ├── web/            # React Web App (Vite)
 ├── .github/        # CI/CD workflows
