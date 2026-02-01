@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
         {
-            "src": "web/landing-page/package.json",
+            "src": "homepage/package.json",
             "use": "@vercel/next"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/web/landing-page/$1"
+            "dest": "/homepage/$1"
         }
     ],
     "env": {

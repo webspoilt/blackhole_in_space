@@ -75,7 +75,7 @@ go build -o vault-relay ./cmd/relay
 ### 3. Web Client
 
 ```bash
-cd web/client
+cd web
 
 # Install dependencies
 npm install

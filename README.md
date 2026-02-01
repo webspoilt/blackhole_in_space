@@ -76,9 +76,8 @@ vault/
 ├── mobile/         # Mobile Apps
 │   ├── ios/        # iOS App (Swift/React Native)
 │   ├── android/    # Android App
-├── web/            # Web Applications
-│   ├── landing-page/ # Next.js Marketing Site (Vercel)
-│   ├── client/     # React Web App (Vite)
+├── homepage/       # Next.js Marketing Site (Vercel)
+├── web/            # React Web App (Vite)
 ├── .github/        # CI/CD workflows
 └── docker-compose.yml
 ```
@@ -108,7 +107,7 @@ cd backend/core && cargo build --release && cd ../..
 cd backend/server && go build -o vault-relay ./cmd/relay && cd ../..
 
 # Build web client
-cd web/client && npm install && npm run build && cd ../..
+cd web && npm install && npm run build && cd ..
 
 # Or use Docker
 docker-compose up -d
