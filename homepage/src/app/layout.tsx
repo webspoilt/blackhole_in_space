@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   keywords: ["secure messaging", "government communications", "FIPS 140-2", "FedRAMP", "on-premise", "zero trust"],
   authors: [{ name: "VAULT Enterprise" }],
   manifest: "/manifest.json",
-  themeColor: "#0a0a0a",
   icons: {
     icon: "/favicon.png",
     apple: "/vault-icon-192.png",
@@ -26,6 +25,10 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "VAULT",
   },
+};
+
+export const viewport = {
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
