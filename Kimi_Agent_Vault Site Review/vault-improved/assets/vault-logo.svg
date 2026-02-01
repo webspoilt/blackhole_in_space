@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background Shield -->
+  <path d="M256 16L48 120v176c0 120 88 200 208 200s208-80 208-200V120L256 16z" fill="#0f172a" stroke="#3b82f6" stroke-width="8"/>
+  
+  <!-- Inner Shield Gradient -->
+  <defs>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <path d="M256 40L72 132v164c0 104 76 172 184 172s184-68 184-172V132L256 40z" fill="url(#shieldGradient)" stroke="#1e40af" stroke-width="4"/>
+  
+  <!-- Lock Body -->
+  <rect x="176" y="220" width="160" height="140" rx="16" fill="url(#lockGradient)"/>
+  
+  <!-- Lock Shackle -->
+  <path d="M200 220V180c0-30.9 25.1-56 56-56s56 25.1 56 56v40" stroke="#60a5fa" stroke-width="24" fill="none" stroke-linecap="round"/>
+  
+  <!-- Keyhole -->
+  <circle cx="256" cy="290" r="24" fill="#0f172a"/>
+  <path d="M256 314v32" stroke="#0f172a" stroke-width="16" stroke-linecap="round"/>
+  
+  <!-- Signal Waves (Communication) -->
+  <path d="M120 256c0-75 61-136 136-136" stroke="#06b6d4" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M144 256c0-62 50-112 112-112" stroke="#06b6d4" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <path d="M168 256c0-49 39-88 88-88" stroke="#06b6d4" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
+  
+  <path d="M392 256c0 75-61 136-136 136" stroke="#06b6d4" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M368 256c0 62-50 112-112 112" stroke="#06b6d4" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <path d="M344 256c0 49-39 88-88 88" stroke="#06b6d4" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
+  
+  <!-- Star (Government/Secure) -->
+  <path d="M256 380l12 24 26-6-6 26 22 16-22 16 6 26-26-6-12 24-12-24-26 6 6-26-22-16 22-16-6-26 26 6 12-24z" fill="#fbbf24" opacity="0.9"/>
+</svg>
